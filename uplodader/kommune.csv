@@ -1,5 +1,3 @@
-"06462: Jordbruksareal (dekar), etter region, vekst, statistikkvariabel og år"
-
 "region";"vekst";"Jordbruksareal 1969";"Jordbruksareal 1979";"Jordbruksareal 1989";"Jordbruksareal 1999";"Jordbruksareal 2000";"Jordbruksareal 2001";"Jordbruksareal 2002";"Jordbruksareal 2003";"Jordbruksareal 2004";"Jordbruksareal 2005";"Jordbruksareal 2006";"Jordbruksareal 2007";"Jordbruksareal 2008";"Jordbruksareal 2009";"Jordbruksareal 2010";"Jordbruksareal 2011";"Jordbruksareal 2012";"Jordbruksareal 2013";"Jordbruksareal 2014";"Jordbruksareal 2015";"Jordbruksareal 2016";"Jordbruksareal 2017"
 "0101 Halden";"Jordbruksareal i drift";57817;59571;61661;61029;60867;61952;61878;61617;62019;61743;61720;62470;61604;62332;63111;62529;61079;61504;61453;61247;61075;60442
 "0104 Moss";"Jordbruksareal i drift";6852;6841;6590;6495;5796;5501;5658;5469;5398;5732;5594;5345;5154;5154;5251;5135;5027;4154;3928;3829;3803;3592
@@ -314,7 +312,7 @@
 "5024 Orkdal";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
 "5025 Røros";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
 "5026 Holtålen";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
-"5027 Midtre Gauldal";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+"5027 Midtre GauldaOppdall";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
 "5028 Melhus";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
 "5029 Skaun";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
 "5030 Klæbu";"Jordbruksareal i drift";0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
