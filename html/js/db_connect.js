@@ -1,12 +1,14 @@
+
 var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "18.188.167.162",
-  user: "digiKartReader",
-  password: "123456"
+var connection = mysql.createConnection({
+	host:"localhost",
+    user:"digiKartAdmin",
+    password:"CSOI-83ee-676e-991b-3f20-6a41",
+    database:"mydb"
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
+connection.connect(function(err) {
+    if (err) throw err;
 });
+
+module.exports = connection;
