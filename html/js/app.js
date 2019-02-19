@@ -20,15 +20,33 @@ function reqListener(data) {
 	load();
 }
 
+initialize(1969);
 
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", reqListener);
-oReq.open("GET", "/api");
-oReq.send();
+function initialize(number)
+{
+	var params = "year="+number;
+	var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", reqListener);
+	oReq.open("GET", "/api"+"?"+params);
+	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+	oReq.send();
+}
 
 
 
+var slider = document.getElementById("myRange");
 
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+
+
+		if(this.value<2000&&this.value%10==9||this.value>=2000)
+		{
+			initialize(parseInt(this.value));
+			console.log(parseInt(this.value));
+		}
+}
 
 function load(){
 var i;

@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>jordbrukskart</title>
+    <link rel = "stylesheet"
+  type = "text/css"
+  href = "style.css" />
     <style>
       path {
         fill: lightgrey;
@@ -13,15 +16,13 @@
   </head>
   <body>
 
-    <!-- We will put our React component inside this div. -->
-    <div id="like_button_container"></div>
-
-    <!-- We will put our React component inside this div. -->
-    <div id="like_button_container"></div>
-
+    <div>
     <svg><use href="#norgeskart"></use></svg>
 
-
+      <div class="slidecontainer">
+          <input type="range" min="1969" max="2017" value="0" class="slider" id="myRange">
+      </div>
+    </div>
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
@@ -30,7 +31,7 @@
 
     <!-- Load our React component. -->
 	<script> var exports = {}; </script>
-	
+
 	<script type="text/jsx" type="module" src="js/app.js"></script>
     <!-- Example: <script src="js/like_button.js"></script>  -->
 
