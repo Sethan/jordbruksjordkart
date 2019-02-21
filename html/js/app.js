@@ -41,11 +41,28 @@ var slider = document.getElementById("myRange");
 slider.oninput = function() {
 
 
-		if(this.value<2000&&this.value%10==9||this.value>=2000)
+		if(this.value==1996)
+		{
+			initialize(parseInt(1969));
+			console.log(parseInt(1969));
+		}
+		else if (this.value==1997)
+		{
+			initialize(parseInt(1979));
+			console.log(parseInt(1979));
+		}
+		else if (this.value==1998)
+		{
+			initialize(parseInt(1989));
+			console.log(parseInt(1989));
+		}
+		else
 		{
 			initialize(parseInt(this.value));
 			console.log(parseInt(this.value));
 		}
+
+
 }
 
 function load(){
