@@ -52,7 +52,7 @@ function load(){
 var i;
 for(i in ids){
 	var location;
-	var color=percentages[i]*500+100;
+	var color=-5*percentages[i]*percentages[i]+percentages[i]*500+5;
 	if(ids[i]<1000)
 			{
 				location="0"+ids[i];
@@ -65,7 +65,8 @@ for(i in ids){
 	if(document.getElementById(location))
 	{
 			document.getElementById(location).style.fill=rgb(0,255,0);
-			document.getElementById(location).style.opacity=percentages[i]*8+0.20;
+					document.getElementById(location).style.opacity=color/255+0.20;
+
 	}
 	else {
 		console.log(location);
