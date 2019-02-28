@@ -31,16 +31,28 @@ function initialize(number)
 	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 	oReq.send();
 }
+function getInfo()
+{
+	var params = "areal_id=0"+101;
+	var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", reqListenerGetInfo);
+	oReq.open("GET", "/getinfo"+"?"+params);
+	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+	oReq.send();
+	console.log("awd");
+}
+function reqListenerGetInfo(data) {
+	var temp=this.response;
+	console.log(temp);
+}
 
-
+getInfo()
 
 var slider = document.getElementById("myRange");
 
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-
-
 		if(this.value==1996)
 		{
 			initialize(parseInt(1969));
@@ -61,15 +73,14 @@ slider.oninput = function() {
 			initialize(parseInt(this.value));
 			console.log(parseInt(this.value));
 		}
-
-
 }
 
 function load(){
 var i;
 for(i in ids){
 	var location;
-	var color=-5*percentages[i]*percentages[i]+percentages[i]*500+5;
+	var red=255-35*Math.log2(percentages[i]*100+1);
+	var green=35*Math.log2(percentages[i]*100+1);
 	if(ids[i]<1000)
 			{
 				location="0"+ids[i];
@@ -81,16 +92,9 @@ for(i in ids){
 
 	if(document.getElementById(location))
 	{
-			document.getElementById(location).style.fill=rgb(0,255,0);
-					document.getElementById(location).style.opacity=color/255+0.20;
-
+			document.getElementById(location).style.fill=rgb(red,green,0);
 	}
-	else {
-		console.log(location);
-	}
-
 }
-
 }
 
 

@@ -3,31 +3,31 @@ var app = express();
 var db = require('./html/js/db_connect');
 var bodyParser = require('body-parser')
 
-var currentRes = [];
-db.query("SELECT id, (landbruksareal/(areal*1000.0)) as percent FROM kommune, kommunelandbruksareal where Aar=1969 and Kommune_id=id", function (err, result, fields) {
-    if (err) throw err;
-	setValue(result);
-});
 
-
-function setValue(value) {
-  currentRes = value;
-}
 app.use(express.static(__dirname + '/html'));
-
-
 app.get('/api', function(req, res){
-    res.send(currentRes);
-    console.log(req.query.year);
-    updateRes(req.query.year);
+    if(req.query.year)
+    {
+      db.query("SELECT id, (landbruksareal/(areal*1000.0)) as percent FROM kommune, kommunelandbruksareal where Aar="+req.query.year+" and Kommune_id=id", function (err, result, fields) {
+          if (err) throw err;
+         res.send(result);
+      });
+    }
 });
-app.listen(3000);
+app.get('/getinfo', function(req, res){
+  if(req.query.areal_id)
+  {
+    db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
+        if (err) throw err;
+       res.send(result);
+    });
+  }
+});
 
 
-function updateRes(years)
+function getInfo(area_id)
 {
-  db.query("SELECT id, (landbruksareal/(areal*1000.0)) as percent FROM kommune, kommunelandbruksareal where Aar="+years+" and Kommune_id=id", function (err, result, fields) {
-      if (err) throw err;
-  	setValue(result);
-  });
+
 }
+
+app.listen(3000);
