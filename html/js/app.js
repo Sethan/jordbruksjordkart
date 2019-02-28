@@ -31,22 +31,6 @@ function initialize(number)
 	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 	oReq.send();
 }
-function getInfo()
-{
-	var params = "areal_id=0"+101;
-	var oReq = new XMLHttpRequest();
-	oReq.addEventListener("load", reqListenerGetInfo);
-	oReq.open("GET", "/getinfo"+"?"+params);
-	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-	oReq.send();
-	console.log("awd");
-}
-function reqListenerGetInfo(data) {
-	var temp=this.response;
-	console.log(temp);
-}
-
-getInfo()
 
 var slider = document.getElementById("myRange");
 
@@ -89,7 +73,6 @@ for(i in ids){
 		{
 				location=ids[i];
 		}
-
 	if(document.getElementById(location))
 	{
 			document.getElementById(location).style.fill=rgb(red,green,0);

@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var db = require('./html/js/db_connect');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
 
 
 app.use(express.static(__dirname + '/html'));
@@ -17,17 +18,13 @@ app.get('/api', function(req, res){
 app.get('/getinfo', function(req, res){
   if(req.query.areal_id)
   {
-    db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
+    //db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
+    db.query("SELECT landbruksareal,areal, Aar, (landbruksareal/(areal*10.0)) as percent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
         if (err) throw err;
-       res.send(result);
+       res.send(JSON.stringify(result));
     });
   }
 });
 
-
-function getInfo(area_id)
-{
-
-}
 
 app.listen(3000);
