@@ -1,14 +1,23 @@
+
+
 class AreaFormat extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            form: []
+            form: [],
+            areal_id:101
         }
     }
+    idManager()
+    {
+      this.state.areal_id=104;
+    }
+
     componentDidMount()
     {
       let self = this;
-        fetch("/getinfo?areal_id=0101", {
+        var adress ="/getinfo?areal_id="+this.state.areal_id;
+        fetch(adress, {
             method: 'GET'
         }).then(function(response) {
             if (response.status >= 400) {
@@ -36,12 +45,12 @@ class AreaFormat extends React.Component {
                        </thead>
                        <tbody>
 
-                       {this.state.form.map(member =>
-                        <tr key={member.Aar}>
-                        <td>{member.Aar} </td>
-                        <td>{member.landbruksareal}</td>
-                        <td>{member.areal}</td>
-                        <td>{member.percent}</td>
+                       {this.state.form.map(area =>
+                        <tr key={area.Aar}>
+                        <td>{area.Aar} </td>
+                        <td>{area.landbruksareal}</td>
+                        <td>{area.areal}</td>
+                        <td>{area.percent}</td>
                         </tr>
                         )}
                        </tbody>
@@ -51,4 +60,4 @@ class AreaFormat extends React.Component {
          );
    }
 }
-ReactDOM.render(<AreaFormat/>, window.document.getElementById("Form"));
+const areaformat = ReactDOM.render(<AreaFormat/>, window.document.getElementById("Form"));

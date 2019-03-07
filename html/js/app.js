@@ -76,10 +76,17 @@ for(i in ids){
 	if(document.getElementById(location))
 	{
 			document.getElementById(location).style.fill=rgb(red,green,0);
+			document.getElementById(location).addEventListener('click', updateForm ,true);
 	}
 }
 }
 
+function updateForm()
+{
+	areaformat.setState({areal_id:this.id});
+	console.log(areaformat.state.areal_id);
+	areaformat.componentDidMount();
+}
 
 function rgb(r, g, b){
   r = Math.floor(r);
