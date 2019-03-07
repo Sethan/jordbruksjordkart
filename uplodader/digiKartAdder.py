@@ -34,7 +34,7 @@ with open("kommune.csv") as f:
     )
     mycursor=mydb.cursor()
     years=[]
-    for row in reader:  
+    for row in reader:
         with open("kommuneAreal.csv", encoding="UTF-8") as u:
             reader2=csv.reader(u, delimiter=";")
             if counter==0:
@@ -54,5 +54,3 @@ with open("kommune.csv") as f:
             mydb.commit()
             print("Number %d" %counter)
             counter+=1
-
-

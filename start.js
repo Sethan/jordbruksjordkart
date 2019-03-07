@@ -18,6 +18,7 @@ app.get('/api', function(req, res){
 app.get('/getinfo', function(req, res){
   if(req.query.areal_id)
   {
+    //select sum(landbruksareal), kommunelandbruksareal.aar, fylke.id from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar;
     //db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
     db.query("SELECT landbruksareal,areal, Aar, (landbruksareal/(areal*10.0)) as percent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
         if (err) throw err;
