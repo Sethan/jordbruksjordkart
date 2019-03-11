@@ -16,7 +16,14 @@ class AreaFormat extends React.Component {
     componentDidMount()
     {
       let self = this;
-        var adress ="/getinfo?areal_id="+this.state.areal_id;
+      var adress;
+      if(this.state.areal_id<100)
+      {
+        adress ="/getinfo?area_id="+this.state.areal_id;
+      }
+      else {
+          adress ="/getinfo?areal_id="+this.state.areal_id;
+      }
         fetch(adress, {
             method: 'GET'
         }).then(function(response) {
@@ -46,8 +53,8 @@ class AreaFormat extends React.Component {
                        <tbody>
 
                        {this.state.form.map(area =>
-                        <tr key={area.Aar}>
-                        <td>{area.Aar} </td>
+                        <tr key={area.aar}>
+                        <td>{area.aar} </td>
                         <td>{area.landbruksareal}</td>
                         <td>{area.areal}</td>
                         <td>{area.percent}</td>
