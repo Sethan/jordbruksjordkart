@@ -83,12 +83,11 @@ for(i in ids){
 
 function updateForm()
 {
-	if(!isNaN(document.getElementById('forminput').value))
-	{
+
 		areaformat.setState({areal_id:document.getElementById('forminput').value});
 		areaformat.componentDidMount();
 		return false;
-	}
+
 }
 
 function rgb(r, g, b){

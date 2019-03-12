@@ -16,14 +16,7 @@ class AreaFormat extends React.Component {
     componentDidMount()
     {
       let self = this;
-      var adress;
-      if(this.state.areal_id<100)
-      {
-        adress ="/getinfo?area_id="+this.state.areal_id;
-      }
-      else {
-          adress ="/getinfo?areal_id="+this.state.areal_id;
-      }
+      var adress ="/getinfo?area_id="+this.state.areal_id;
         fetch(adress, {
             method: 'GET'
         }).then(function(response) {
