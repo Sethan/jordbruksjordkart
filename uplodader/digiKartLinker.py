@@ -2,7 +2,7 @@ import math
 import mysql.connector
 import csv
 
-with open("kommuneAreal.csv", encoding="UTF-8") as k:
+with open("kommuneAreal.csv") as k:
     mydb = mysql.connector.connect(
             host="localhost",
             user="digiKartAdmin",
@@ -14,7 +14,7 @@ with open("kommuneAreal.csv", encoding="UTF-8") as k:
     mydb.commit()
     reader=csv.reader(k, delimiter=";")
     for row in reader:
-        sql = "INSERT INTO kommuner_over_tid (Aar,Fylke_id,Kommune_id) VALUES (%s,%s,%s)"
+        sql = "INSERT INTO kommuner_over_tid (aar,fylke_id,kommune_id) VALUES (%s,%s,%s)"
         values =(2016,math.floor(int(row[0])/100),row[0])
         mycursor.execute(sql,values)
     mydb.commit()

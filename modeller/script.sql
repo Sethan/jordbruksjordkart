@@ -18,74 +18,58 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Fylke`
+-- Table `mydb`.`fylke`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Fylke` (
+CREATE TABLE IF NOT EXISTS `mydb`.`fylke` (
   `id` INT NOT NULL,
-  `Navn` VARCHAR(45) NOT NULL,
-  `Areal` INT(11) NOT NULL,
+  `navn` VARCHAR(45) NOT NULL,
+  `areal` INT(11) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Kommune`
+-- Table `mydb`.`kommune`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Kommune` (
+CREATE TABLE IF NOT EXISTS `mydb`.`kommune` (
   `id` INT NOT NULL,
-  `Navn` VARCHAR(45) NOT NULL,
-  `Areal` INT(11) NOT NULL,
+  `navn` VARCHAR(45) NOT NULL,
+  `areal` INT(11) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Kommuner over tid`
+-- Table `mydb`.`kommuner over tid`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Kommuner over tid` (
-  `Aar` YEAR NOT NULL,
-  `Fylke_id` INT NOT NULL,
-  `Kommune_id` INT NOT NULL,
-  INDEX `fk_Kommuner over tid_Kommune1_idx` (`Kommune_id` ASC),
-  CONSTRAINT `fk_Kommuner over tid_Fylke1`
-    FOREIGN KEY (`Fylke_id`)
-    REFERENCES `mydb`.`Fylke` (`id`)
+CREATE TABLE IF NOT EXISTS `mydb`.`kommuner_over_tid` (
+  `aar` YEAR NOT NULL,
+  `fylke_id` INT NOT NULL,
+  `kommune_id` INT NOT NULL,
+  INDEX `fk_kommuner_over_tid_kommune1_idx` (`kommune_id` ASC),
+  CONSTRAINT `fk_kommuner_over_tid_fylke1`
+    FOREIGN KEY (`fylke_id`)
+    REFERENCES `mydb`.`fylke` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Kommuner over tid_Kommune1`
-    FOREIGN KEY (`Kommune_id`)
-    REFERENCES `mydb`.`Kommune` (`id`)
+  CONSTRAINT `fk_kommuner_over_tid_kommune1`
+    FOREIGN KEY (`kommune_id`)
+    REFERENCES `mydb`.`kommune` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`FylkeLandbruksareal`
+-- Table `mydb`.`kommunelandbruksareal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`FylkeLandbruksareal` (
-  `Landbruksareal` INT(11) NULL,
-  `Aar` YEAR NOT NULL,
-  `Fylke_id` INT NOT NULL,
-  `FylkeLandbruksarealcol` VARCHAR(45) NULL,
-  CONSTRAINT `fk_FylkeLandbruksareal_Fylke`
-    FOREIGN KEY (`Fylke_id`)
-    REFERENCES `mydb`.`Fylke` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`KommuneLandbruksareal`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`KommuneLandbruksareal` (
-  `Landbruksareal` INT NULL,
-  `Aar` YEAR NOT NULL,
-  `Kommune_id` INT NOT NULL,
-  CONSTRAINT `fk_KommuneLandbruksareal_Kommune1`
-    FOREIGN KEY (`Kommune_id`)
-    REFERENCES `mydb`.`Kommune` (`id`)
+CREATE TABLE IF NOT EXISTS `mydb`.`kommunelandbruksareal` (
+  `landbruksareal` INT NULL,
+  `aar` YEAR NOT NULL,
+  `kommune_id` INT NOT NULL,
+  CONSTRAINT `fk_kommunelandbruksareal_kommune1`
+    FOREIGN KEY (`kommune_id`)
+    REFERENCES `mydb`.`kommune` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

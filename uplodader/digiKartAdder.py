@@ -14,7 +14,6 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
     mycursor.execute("DELETE FROM kommune")
     mycursor.execute("DELETE FROM kommunelandbruksareal")
     mycursor.execute("DELETE FROM fylke")
-    mycursor.execute("DELETE FROM fylkelandbruksareal")
     mydb.commit()
     for row in reader:
         sql = "INSERT INTO fylke (id,Navn,Areal) VALUES (%s,%s,%s)"
@@ -23,7 +22,7 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
     mydb.commit()
 
 
-with open("kommune.csv") as f:
+with open("kommune.csv", encoding="ISO-8859-1") as f:
     reader=csv.reader(f, delimiter=";")
     counter=0
     mydb = mysql.connector.connect(
