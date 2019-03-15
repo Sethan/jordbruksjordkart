@@ -15,6 +15,14 @@
 
   </head>
   <body>
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Meny</button>
+      <div id="myDropdown" class="dropdown-content">
+        <button class="menubtn" onclick="showMap()">Kart</button>
+        <button class="menubtn" onclick="showSearch()">Søk</button>
+        <button class="menubtn" onclick="showGraph()">Graf</button>
+      </div>
+    </div>
     <div id="digiKart">
     <svg><use href="#norgeskart"></use></svg>
 
@@ -22,7 +30,7 @@
           <input type="range" min="1996" max="2017" value="0" class="slider" id="myRange">
       </div>
     </div>
-    <form >
+    <form id="searchbar" >
       <input id="forminput" type="input" placeholder="Search..">
       <button type="button" onclick="updateForm()"></button>
       </form>

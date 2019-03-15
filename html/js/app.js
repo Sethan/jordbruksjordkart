@@ -1,7 +1,37 @@
 
 var ids=[];
 var percentages=[];
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+function showMap()
+{
+	document.getElementById("searchbar").style.display="none";
+	document.getElementById("Form").style.display="none";
+	document.getElementById("NO").style.display="block";
+	document.getElementById("myRange").style.display="block";
+}
+function showSearch()
+{
+	document.getElementById("searchbar").style.display="block";
+	document.getElementById("Form").style.display="block";
+	document.getElementById("NO").style.display="none";
+	document.getElementById("myRange").style.display="none";
+}
 function reqListener(data) {
 	var temp=this.response;
 	temp=temp.replace(/[^\d,.]/g, '');
