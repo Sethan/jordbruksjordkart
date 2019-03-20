@@ -1,7 +1,9 @@
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
-
+body{
+  height: 600px;
+}
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
