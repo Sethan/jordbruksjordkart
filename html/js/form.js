@@ -1,16 +1,15 @@
-
-
 class AreaFormat extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             form: [],
-            areal_id:101
+            areal_id:"norge"
         }
     }
-    idManager()
+
+    getState()
     {
-      this.state.areal_id=104;
+      return this.state;
     }
 
     componentDidMount()
@@ -38,9 +37,9 @@ class AreaFormat extends React.Component {
                        <thead>
                            <tr>
                                <th>År</th>
-                               <th>landbruksareal</th>
-                               <th>Totalareal</th>
+                               <th>Landbruksareal</th>
                                <th>Prosent</th>
+                               <th>{this.state.areal_id}</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -49,8 +48,7 @@ class AreaFormat extends React.Component {
                         <tr key={area.aar}>
                         <td>{area.aar} </td>
                         <td>{area.landbruksareal}</td>
-                        <td>{area.areal}</td>
-                        <td>{area.percent}</td>
+                        <td>{area.percent}%</td>
                         </tr>
                         )}
                        </tbody>
