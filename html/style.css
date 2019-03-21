@@ -1,6 +1,11 @@
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
+#digiKart
+{
+  width: 100%;
+  height: 100%;
+}
 
 /* The slider itself */
 .slider {
