@@ -1,18 +1,9 @@
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
-<<<<<<< HEAD
-#digiKart
-{
-  width: 100%;
-  height: 100%;
-}
-
-=======
 body{
   height: 600px;
 }
->>>>>>> b6c5a6d24ea6761d8b23b1a86401253dfb67fe38
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
