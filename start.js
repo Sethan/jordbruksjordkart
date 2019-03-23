@@ -3,7 +3,11 @@ var app = express();
 var db = require('./html/js/db_connect');
 var bodyParser = require('body-parser');
 
+//top 5 by percent
+//select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, (sum(landbruksareal)/(sum(kommune.areal)*10.0)) as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id  and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar order by percent desc limit 5;
 
+//compares percent of 1969 and 2000
+//select t1.id, ((t1.percent-t2.percent)/10) as percent from (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=2000 group by id) as t2 where t1.id=t2.id order by percent;
 
 app.use(express.static(__dirname + '/html'));
 app.get('/api', function(req, res){
@@ -26,7 +30,7 @@ app.get('/getinfo', function(req, res){
       if(req.query.area_id=="norge")
       {
 
-          q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY kommunelandbruksareal.aar order by aar desc";
+          q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id and kommuner_over_tid.aar=2016 GROUP BY kommunelandbruksareal.aar order by aar desc";
           db.query(q, function (err, result, fields) {
               if (err) throw err;
               res.send(JSON.stringify(result));
