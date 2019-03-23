@@ -25,9 +25,10 @@ class AreaFormat extends React.Component {
             return response.json();
         }).then(function(data) {
             self.setState({form: data});
+            updateChart(self.getState());
         }).catch(err => {
         console.log('caught it!',err);
-        })
+      });
     }
     render() {
            return (
