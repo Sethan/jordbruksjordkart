@@ -10,7 +10,6 @@ with open("kommuneAreal.csv") as k:
             database="mydb"
     )
     mycursor=mydb.cursor()
-    mycursor.execute("DELETE FROM kommuner_over_tid")
     mydb.commit()
     reader=csv.reader(k, delimiter=";")
     for row in reader:
