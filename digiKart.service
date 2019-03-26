@@ -1,0 +1,14 @@
+[Unit]
+Description=Node.js Hello World Http Server
+
+[Service]
+PIDFile=/tmp/digikart-99.pid
+User=<Your Username>
+Group=<Your User Group>
+Restart=always
+KillSignal=SIGQUIT
+WorkingDirectory=/home/<username>/jordbruksjordkart/
+ExecStart=/home/<username>/jordbruksjordkart/server.js
+
+[Install]
+WantedBy=multi-user.target

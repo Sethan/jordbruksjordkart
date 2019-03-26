@@ -11,6 +11,7 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
             database="mydb"
     )
     mycursor=mydb.cursor()
+    mycursor.execute("DELETE FROM kommuner_over_tid")
     mycursor.execute("DELETE FROM kommune")
     mycursor.execute("DELETE FROM kommunelandbruksareal")
     mycursor.execute("DELETE FROM fylke")
