@@ -1,8 +1,13 @@
 var express = require('express');
 var app = express();
 var db = require('./html/js/db_connect');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
+//top 5 by percent
+//select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, (sum(landbruksareal)/(sum(kommune.areal)*10.0)) as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id  and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar order by percent desc limit 5;
+
+//compares percent of 1969 and 2000
+//select t1.id, ((t1.percent-t2.percent)/10) as percent from (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=2000 group by id) as t2 where t1.id=t2.id order by percent;
 
 app.use(express.static(__dirname + '/html'));
 app.get('/api', function(req, res){
@@ -15,19 +20,63 @@ app.get('/api', function(req, res){
     }
 });
 app.get('/getinfo', function(req, res){
-  if(req.query.areal_id)
+  if(req.query.area_id)
   {
-    db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
-        if (err) throw err;
-       res.send(result);
-    });
+    var q="";
+    //select sum(landbruksareal), kommunelandbruksareal.aar, fylke.id from kommune, fylke, kommuner_over_tid, kommunelanadress ="/getinfo?areal_id="+this.state.areal_id;dbruksareal where fylke.id=Fylke_id and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar;
+    //db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
+    if(isNaN(req.query.area_id))
+    {
+      if(req.query.area_id=="norge")
+      {
+
+          q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id and kommuner_over_tid.aar=2016 GROUP BY kommunelandbruksareal.aar order by aar desc";
+          db.query(q, function (err, result, fields) {
+              if (err) throw err;
+              res.send(JSON.stringify(result));
+          });
+      }
+      else {
+      q="SELECT landbruksareal,areal, aar, (landbruksareal/(areal*10.0)) as percent FROM kommune, kommunelandbruksareal where kommune.navn='"+req.query.area_id+"' and Kommune_id=id order by aar DESC";
+      db.query(q, function (err, result, fields) {
+          if (err) throw err;
+          if(result=="")
+          {
+            db.query("select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, (sum(landbruksareal)/(sum(kommune.areal)*10.0)) as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and fylke.navn='"+req.query.area_id+"' and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar order by aar DESC", function (err2, result2, fields2) {
+                if (err2) throw err;
+                  res.send(JSON.stringify(result2));
+              });
+          }
+          else {
+              res.send(JSON.stringify(result));
+          }
+
+      });
+    }
+    }
+    else {
+      if(req.query.area_id>99)
+      {
+        q="SELECT landbruksareal,areal, aar, (landbruksareal/(areal*10.0)) as percent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.area_id+" and Kommune_id=id order by aar DESC";
+      }
+      else {
+        q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, (sum(landbruksareal)/(sum(kommune.areal)*10.0)) as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and fylke.id="+req.query.area_id+" and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar order by aar DESC";
+      }
+      db.query(q, function (err, result, fields) {
+          if (err) throw err;
+          res.send(JSON.stringify(result));
+      });
+    }
+
   }
 });
+app.get('/getgeoinfo', function(req, res){
+  q="select kommunelandbruksareal.aar as aar, (sum(landbruksareal)/(sum(kommune.areal)*10.0)) as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY kommunelandbruksareal.aar";
+  db.query(q, function (err, result, fields) {
+      if (err) throw err;
+      res.send(JSON.stringify(result));
+  });
+});
 
-
-function getInfo(area_id)
-{
-
-}
 
 app.listen(3000);

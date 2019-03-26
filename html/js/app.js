@@ -1,7 +1,47 @@
 
 var ids=[];
 var percentages=[];
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+showMap();
+function showMap()
+{
+	document.getElementById("searchbar").style.display="none";
+	document.getElementById("Form").style.display="none";
+	document.getElementById("NO").style.display="block";
+	document.getElementById("myRange").style.display="block";
+  document.getElementById("geochart").style.display="none";
+}
+function showGraph()
+{
+  document.getElementById("geochart").style.display="block";
+  document.getElementById("searchbar").style.display="none";
+	document.getElementById("Form").style.display="none";
+  document.getElementById("NO").style.display="none";
+	document.getElementById("myRange").style.display="none";
+}
+function showSearch()
+{
+	document.getElementById("searchbar").style.display="block";
+	document.getElementById("Form").style.display="block";
+	document.getElementById("NO").style.display="none";
+	document.getElementById("myRange").style.display="none";
+  document.getElementById("geochart").style.display="none";
+}
 function reqListener(data) {
 	var temp=this.response;
 	temp=temp.replace(/[^\d,.]/g, '');
@@ -31,22 +71,6 @@ function initialize(number)
 	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 	oReq.send();
 }
-function getInfo()
-{
-	var params = "areal_id=0"+101;
-	var oReq = new XMLHttpRequest();
-	oReq.addEventListener("load", reqListenerGetInfo);
-	oReq.open("GET", "/getinfo"+"?"+params);
-	oReq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-	oReq.send();
-	console.log("awd");
-}
-function reqListenerGetInfo(data) {
-	var temp=this.response;
-	console.log(temp);
-}
-
-getInfo()
 
 var slider = document.getElementById("myRange");
 
@@ -89,14 +113,23 @@ for(i in ids){
 		{
 				location=ids[i];
 		}
-
 	if(document.getElementById(location))
 	{
 			document.getElementById(location).style.fill=rgb(red,green,0);
+			document.getElementById(location).addEventListener('click', updateForm ,true);
 	}
 }
 }
 
+function updateForm()
+{
+
+		areaformat.setState({areal_id:document.getElementById('forminput').value});
+		areaformat.componentDidMount();
+    updateChart(areaformat.getState());
+    return false;
+
+}
 
 function rgb(r, g, b){
   r = Math.floor(r);

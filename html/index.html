@@ -1,39 +1,44 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" crossorigin></script>
+    <script type="text/jsx" src="js/app.js"></script>
+    <script type="text/jsx" src="js/form.js"></script>
+    <script type="text/jsx"  src="js/chartmaker.js"></script>
+    <script> var exports = {}; </script>
     <title>jordbrukskart</title>
-    <link rel = "stylesheet"
-  type = "text/css"
-  href = "style.css" />
-    <style>
-      path {
-        fill: lightgrey;
-      }
-
-    </style>
-
+    <link rel = "stylesheet" type = "text/css" href = "style.css" />
   </head>
   <body>
-
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Meny</button>
+      <div id="myDropdown" class="dropdown-content">
+        <button class="menubtn" onclick="showMap()">Kart</button>
+        <button class="menubtn" onclick="showSearch()">Søk</button>
+        <button class="menubtn" onclick="showGraph()">Graf</button>
+      </div>
+    </div>
     <div id="digiKart">
-    <svg><use href="#norgeskart"></use></svg>
+
 
       <div class="slidecontainer">
           <input type="range" min="1996" max="2017" value="0" class="slider" id="myRange">
       </div>
     </div>
-    <!-- Load React. -->
-    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <form id="searchbar" >
+      <input id="forminput" type="input" placeholder="Search..">
+      <button type="button" onclick="updateForm()"></button>
+      </form>
+    <div id="Form">
 
-    <!-- Load our React component. -->
-	<script> var exports = {}; </script>
+    </div>
+  <canvas id="geochart"></canvas>
 
-	<script type="text/jsx" type="module" src="js/app.js"></script>
-    <!-- Example: <script src="js/like_button.js"></script>  -->
+  </div>
 
 
 
@@ -48,8 +53,9 @@
        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
        version="1.2"
-       width="2104.7244"
-       height="2979.9211"
+       height="100%"
+       viewBox="0 0 2104.7244 2979.9211"
+       preserveAspectRatio="none"
        id="NO"
        class="norgeskart"
        inkscape:version="0.48.0 r9654"
