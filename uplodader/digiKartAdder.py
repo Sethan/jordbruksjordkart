@@ -1,6 +1,7 @@
 import mysql.connector
 import re
 import csv
+import sys
 
 with open("fylkeAreal.csv", encoding="UTF-8") as f:
     reader=csv.reader(f, delimiter=";")
@@ -54,3 +55,4 @@ with open("kommune.csv", encoding="ISO-8859-1") as f:
             mydb.commit()
             print("Number %d" %counter)
             counter+=1
+sys.exit()
