@@ -51,6 +51,6 @@ with open("kommune.csv", encoding="ISO-8859-1") as f:
                                sql2 = "INSERT INTO kommunelandbruksareal (Landbruksareal,Aar, Kommune_id) VALUES (%s, %s, %s)"
                                values2 = (row[n],years[n-3],x[0])
                                mycursor.execute(sql2,values2)
-                               print("Number %d" %counter)
-                               counter+=1
-mydb.commit()
+            mydb.commit()
+            print("Number %d" %counter)
+            counter+=1
