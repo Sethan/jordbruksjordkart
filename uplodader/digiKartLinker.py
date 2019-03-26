@@ -1,7 +1,6 @@
 import math
 import mysql.connector
 import csv
-import sys
 
 with open("kommuneAreal.csv") as k:
     mydb = mysql.connector.connect(
@@ -23,4 +22,4 @@ with open("kommuneAreal.csv") as k:
             values=(2016,fid,row[0])
         mycursor.execute(sql,values)
     mydb.commit()
-sys.exit()
+quit()
