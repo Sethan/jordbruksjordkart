@@ -14,6 +14,11 @@ with open("kommuneAreal.csv") as k:
     reader=csv.reader(k, delimiter=";")
     for row in reader:
         sql = "INSERT INTO kommuner_over_tid (aar,fylke_id,kommune_id) VALUES (%s,%s,%s)"
-        values =(2016,math.floor(int(row[0])/100),row[0])
+        values=""
+        fid=math.floor(int(row[0])/100)
+        if(math.floor(int(row[0])/100)>22):
+            values=(2018,fid,row[0])
+        else:
+            values=(2016,fid,row[0])
         mycursor.execute(sql,values)
     mydb.commit()
