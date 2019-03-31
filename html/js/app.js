@@ -78,22 +78,21 @@ var slider = document.getElementById("myRange");
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-		if(this.value==1996)
+    var n=this.value;
+		if(n==1996)
 		{
-			initialize(parseInt(1969));
+      n=1969;
 		}
-		else if (this.value==1997)
+		else if (n==1997)
 		{
-			initialize(parseInt(1979));
+      n=1979;
 		}
-		else if (this.value==1998)
+		else if (n==1998)
 		{
-			initialize(parseInt(1989));
+      n=1989;
 		}
-		else
-		{
-			initialize(parseInt(this.value));
-		}
+    initialize(parseInt(n));
+    updateTop(n);
 }
 
 function load(){
@@ -120,12 +119,16 @@ for(i in ids){
 
 function updateForm()
 {
-
 		areaformat.setState({areal_id:document.getElementById('forminput').value});
 		areaformat.componentDidMount();
     updateChart(areaformat.getState());
     return false;
+}
 
+function updateTop(number)
+{
+  topformat.setState({aar:number});
+  topformat.componentDidMount();
 }
 
 function rgb(r, g, b){

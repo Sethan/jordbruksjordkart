@@ -7,8 +7,19 @@ var bodyParser = require('body-parser');
 //select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, (sum(landbruksareal)/(sum(kommune.areal)*10.0)) as percent from kommune, fylke, kommuner_over_tid, kommunelandbruksareal where fylke.id=Fylke_id  and kommune.id=kommuner_over_tid.kommune_id and kommunelandbruksareal.kommune_id=kommune.id GROUP BY fylke.id,kommunelandbruksareal.aar order by percent desc limit 5;
 
 //compares percent of 1969 and 2000
-//select t1.id, ((t1.percent-t2.percent)/10) as percent from (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=2000 group by id) as t2 where t1.id=t2.id order by percent;
+//select t1.id, ((t1.percent-t2.percent)/10) as percent from (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=2000 group by id) as t2 where t1.id=t2.id order by percent desc limit 5;
 
+
+app.get('/gettop', function(req, res){
+    if(req.query.aar)
+    {
+
+      db.query("select t1.navn, ((t1.percent-t2.percent)/10) as percent from (select id, navn, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar="+req.query.aar+" group by id) as t2 where t1.id=t2.id order by percent desc limit 5", function (err, result, fields) {
+          if (err) throw err;
+         res.send(result);
+      });
+    }
+});
 app.use(express.static(__dirname + '/html'));
 app.get('/api', function(req, res){
     if(req.query.year)
