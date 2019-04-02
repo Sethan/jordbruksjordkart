@@ -23,7 +23,6 @@ USE `mydb` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`fylke` (
   `id` INT NOT NULL,
   `navn` VARCHAR(45) NOT NULL,
-  `areal` INT(11) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -35,6 +34,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`kommune` (
   `id` INT NOT NULL,
   `navn` VARCHAR(45) NOT NULL,
   `areal` INT(11) NOT NULL,
+  `startaar` YEAR NOT NULL,
+  `sluttaar` YEAR NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -43,7 +44,6 @@ ENGINE = InnoDB;
 -- Table `mydb`.`kommuner over tid`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`kommuner_over_tid` (
-  `aar` YEAR NOT NULL,
   `fylke_id` INT NOT NULL,
   `kommune_id` INT NOT NULL,
   INDEX `fk_kommuner_over_tid_kommune1_idx` (`kommune_id` ASC),

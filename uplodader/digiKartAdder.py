@@ -23,7 +23,7 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
     mydb.commit()
 
 
-with open("kommune.csv", encoding="ISO-8859-1") as f:
+with open("JordbruksAreal.csv", encoding="ISO-8859-1") as f:
     reader=csv.reader(f, delimiter=";")
     counter=0
     mydb = mysql.connector.connect(
@@ -47,10 +47,12 @@ with open("kommune.csv", encoding="ISO-8859-1") as f:
                            sql = "INSERT INTO kommune (id,Navn,Areal) VALUES (%s,%s,%s)"
                            values =(x[0],x[1],x[2])
                            mycursor.execute(sql,values)
-                           for n in range(3,len(row)):
+                           for n in range(2,len(row)-1):
                                sql2 = "INSERT INTO kommunelandbruksareal (Landbruksareal,Aar, Kommune_id) VALUES (%s, %s, %s)"
-                               values2 = (row[n],years[n-3],x[0])
+                               if row[n]=="NULL":
+                                   row[n]=None
+                               values2 = (row[n],years[n-2],x[0])
                                mycursor.execute(sql2,values2)
-            mydb.commit()
             print("Number %d" %counter)
             counter+=1
+mydb.commit()

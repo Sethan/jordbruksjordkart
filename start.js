@@ -13,8 +13,16 @@ var bodyParser = require('body-parser');
 app.get('/gettop', function(req, res){
     if(req.query.aar)
     {
-
-      db.query("select t1.navn, ((t1.percent-t2.percent)/10) as percent from (select id, navn, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar="+req.query.aar+" group by id) as t2 where t1.id=t2.id order by percent desc limit 5", function (err, result, fields) {
+      db.query("select t1.id, t1.navn, ((t1.percent-t2.percent)/10) as percent from (select id, navn, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar="+req.query.aar+" group by id) as t2 where t1.id=t2.id order by percent desc limit 5", function (err, result, fields) {
+          if (err) throw err;
+         res.send(result);
+      });
+    }
+});
+app.get('/getbot', function(req,res){
+    if(req.query.aar)
+    {
+      db.query("select t1.id, t1.navn, ((t1.percent-t2.percent)/10) as percent from (select id, navn, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar=1969 group by id) as t1, (select id, (sum(landbruksareal)/sum(kommune.areal)) as percent from kommunelandbruksareal, kommune where id=kommune_id and aar="+req.query.aar+" group by id) as t2 where t1.id=t2.id order by percent asc limit 5", function (err, result, fields) {
           if (err) throw err;
          res.send(result);
       });
