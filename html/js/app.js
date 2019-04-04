@@ -121,7 +121,6 @@ function updateForm()
 {
 		areaformat.setState({areal_id:document.getElementById('forminput').value});
 		areaformat.componentDidMount();
-    updateChart(areaformat.getState());
     return false;
 }
 
