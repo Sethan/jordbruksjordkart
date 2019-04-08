@@ -25,6 +25,10 @@ function showMap()
 	document.getElementById("NO").style.display="block";
 	document.getElementById("myRange").style.display="block";
   document.getElementById("geochart").style.display="none";
+
+  var btn = document.getElementById("mainbtn");
+    btn.setAttribute("onClick", "showGraph");
+    btn.innerHTML = "Graf";
 }
 function showGraph()
 {
@@ -33,6 +37,12 @@ function showGraph()
 	document.getElementById("Form").style.display="none";
   document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
+
+  var btn = document.getElementById("mainbtn");
+    btn.setAttribute("onClick", "showMap()");
+    btn.innerHTML = "Kart";
+
+
 }
 function showSearch()
 {
