@@ -20,7 +20,6 @@ window.onclick = function(event) {
 showMap();
 function showMap()
 {
-	document.getElementById("searchbar").style.display="none";
 	document.getElementById("Form").style.display="none";
 	document.getElementById("NO").style.display="block";
 	document.getElementById("myRange").style.display="block";
@@ -33,7 +32,6 @@ function showMap()
 function showGraph()
 {
   document.getElementById("geochart").style.display="block";
-  document.getElementById("searchbar").style.display="none";
 	document.getElementById("Form").style.display="none";
   document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
