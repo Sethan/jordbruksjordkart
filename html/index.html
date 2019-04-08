@@ -13,6 +13,17 @@
     <script> var exports = {}; </script>
     <title>jordbrukskart</title>
     <link rel = "stylesheet" type = "text/css" href = "style.css" />
+
+    <script>
+    var input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("myBtn").click();
+      }
+    });
+    </script>
+
   </head>
   <body>
   <div class="header">
@@ -24,8 +35,8 @@
 
       <div class="searchbox">
         <form id="searchbar">
-          <input id="forminput" type="input" class="searchbar floatleft" placeholder="Search..">
-          <button type="button" class="searchbar-button floatleft" onclick="updateForm()">Search</button>
+          <input id="forminput myInput" type="input" class="searchbar floatleft" placeholder="Search..">
+          <button id="myBtn" type="button" class="searchbar-button floatleft" onclick="updateForm()">Search</button>
         </form>
       </div>
 
