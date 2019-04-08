@@ -15,33 +15,43 @@
     <link rel = "stylesheet" type = "text/css" href = "style.css" />
   </head>
   <body>
-    <div class="dropdown">
-      <button onclick="myFunction()" class="dropbtn">Meny</button>
-      <div id="myDropdown" class="dropdown-content">
-        <button class="menubtn" onclick="showMap()">Kart</button>
-        <button class="menubtn" onclick="showSearch()">Søk</button>
-        <button class="menubtn" onclick="showGraph()">Graf</button>
-      </div>
-    </div>
-    <div id="digiKart">
+  <div class="header">
 
+      <div class="swtbtn">
+        <button id="mainbtn" onclick="showGraph()" class="dropbtn switchbutton circlebtn">Graf</button>
+
+      </div>
+
+      <div class="searchbox">
+        <form id="searchbar">
+          <input id="forminput" type="input" class="searchbar floatleft" placeholder="Search..">
+          <button type="button" class="searchbar-button floatleft" onclick="updateForm()">Search</button>
+        </form>
+      </div>
 
       <div class="slidecontainer">
           <input type="range" min="1996" max="2017" value="0" class="slider" id="myRange">
           <p id="slidertext"></p>
       </div>
-    </div>
-    <form id="searchbar" >
-      <input id="forminput" type="input" placeholder="Search..">
-      <button type="button" onclick="updateForm()"></button>
-      </form>
-    <div id="Form">
-    </div>
-    <div id="TopList"></div>
-  <canvas id="geochart"></canvas>
+
+      <div class="swtbtn">
+        <button id="secbtn" onclick="myFunction()" class="dropbtn switchbutton2 circlebtn">swap2</button>
+
+      </div>
 
   </div>
 
+    <div id="digiKart">
+
+    </div>
+    <div id="Form">
+
+    </div>
+    <div id="TopList"></div>
+
+      <canvas id="geochart" style="display:none"></canvas>
+
+    </div>
 
 
 
