@@ -1,28 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+svg {
+    padding-top: 250px;
+}
+
 body{
   width: 100%;
-  min-width: 600px;
+  min-width: 540px;
   padding-left: 15px;
   padding-right: 15px;
+  background-color: grey;
 }
 path{
   fill:lightgrey;
 }
-svg {
-  height: inherit;
-  width: inherit;
-}
 .floatleft {
   float: left;
 }
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
-
 .header {
   width: 100%;
-  height: 250px;
+  height: 24%;
   padding-bottom: 4px;
-
+  position: fixed;
 }
 .switchbutton {
   position: absolute;
@@ -41,28 +41,69 @@ svg {
   height: 100px;
 }
 .searchbar {
-  width: 25%;
+  width: 100%;
   height: 50px;
   left: 0;
   padding-left: 15px;
 }
 .searchbar-button {
-  height: 56px;
-  width: 7%;
+  height: 50px;
+  width: 9%;
 }
 .searchbox {
   padding-top: 25px;
 }
-.slidecontainer {
-  padding-top: 77.5px;
+
+/* Autocomplete */
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  width: 35%;
 }
 
 
+/* Slider */
+
+.slidecontainer {
+  padding-top: 77.5px;
+  width: 100%; /* Width of the outside container */
+}
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
-  width: 100%; /* Full-width */
+  width: 80%; /* Full-width */
   height: 70px; /* Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */

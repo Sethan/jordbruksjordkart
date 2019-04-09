@@ -39,8 +39,6 @@ function showGraph()
   var btn = document.getElementById("mainbtn");
     btn.setAttribute("onClick", "showMap()");
     btn.innerHTML = "Kart";
-
-
 }
 function showSearch()
 {
