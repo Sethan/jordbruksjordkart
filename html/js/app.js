@@ -20,27 +20,39 @@ window.onclick = function(event) {
 showMap();
 function showMap()
 {
-	document.getElementById("searchbar").style.display="none";
 	document.getElementById("Form").style.display="none";
 	document.getElementById("NO").style.display="block";
 	document.getElementById("myRange").style.display="block";
   document.getElementById("geochart").style.display="none";
+  document.getElementById("TopList").style.display="none";
+  document.getElementById("digiKart").style.display="block";
 }
 function showGraph()
 {
   document.getElementById("geochart").style.display="block";
-  document.getElementById("searchbar").style.display="none";
 	document.getElementById("Form").style.display="none";
   document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
+  document.getElementById("TopList").style.display="none";
+  document.getElementById("digiKart").style.display="none";
+}
+function showTop()
+{
+  document.getElementById("TopList").style.display="block";
+  document.getElementById("NO").style.display="none";
+	document.getElementById("myRange").style.display="none";
+  document.getElementById("geochart").style.display="none";
+  document.getElementById("Form").style.display="none";
+  document.getElementById("digiKart").style.display="none";
 }
 function showSearch()
 {
-	document.getElementById("searchbar").style.display="block";
 	document.getElementById("Form").style.display="block";
 	document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
   document.getElementById("geochart").style.display="none";
+  document.getElementById("TopList").style.display="none";
+  document.getElementById("digiKart").style.display="none";
 }
 function reqListener(data) {
 	var temp=this.response;
