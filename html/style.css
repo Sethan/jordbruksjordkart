@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
 }
@@ -11,13 +12,21 @@ body{
   padding-left: 15px;
   padding-right: 15px;
   background-color: grey;
+=======
+body{
+  max-height: 900px;
+  padding-left: 15px;
+  padding-right: 15px;
+>>>>>>> origin/DevelopmentBranch
 }
+
 path{
   fill:lightgrey;
 }
 .floatleft {
   float: left;
 }
+<<<<<<< HEAD
 .header {
   width: 100%;
   height: 24%;
@@ -26,33 +35,65 @@ path{
 }
 .switchbutton {
   position: absolute;
+=======
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+.header {
+  width: 100%;
+  height: 250px;
+  padding-bottom: 4px;
+
+}
+.switchbutton {
+  position: fixed;
+>>>>>>> origin/DevelopmentBranch
   top: 10px;
   right: -55px;
 }
 .switchbutton2 {
+<<<<<<< HEAD
   position: absolute;
+=======
+  position: fixed;
+>>>>>>> origin/DevelopmentBranch
   top: 140px;
   right: -55px;
 }
 .circlebtn {
+<<<<<<< HEAD
   border-radius: 20%;
+=======
+  border-radius: 70%;
+>>>>>>> origin/DevelopmentBranch
   padding-right: 10px;
   width: 170px;
   height: 100px;
 }
 .searchbar {
+<<<<<<< HEAD
   width: 100%;
+=======
+  width: 25%;
+>>>>>>> origin/DevelopmentBranch
   height: 50px;
   left: 0;
   padding-left: 15px;
 }
 .searchbar-button {
+<<<<<<< HEAD
   height: 50px;
   width: 9%;
+=======
+  height: 56px;;
+  width: 7%;
+>>>>>>> origin/DevelopmentBranch
 }
 .searchbox {
   padding-top: 25px;
 }
+<<<<<<< HEAD
 
 /* Autocomplete */
 
@@ -99,6 +140,13 @@ path{
   padding-top: 77.5px;
   width: 100%; /* Width of the outside container */
 }
+=======
+.slidecontainer {
+  padding-top: 77.5px;
+}
+
+
+>>>>>>> origin/DevelopmentBranch
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
@@ -133,13 +181,31 @@ path{
   background: #4CAF50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
+<<<<<<< HEAD
 .dropbtn {
   background-color: #627b2f;
+=======
+#forminput{
+  border: 2px solid blue;
+  border-radius: 4px;
+  padding:16px;
+}
+button {
+  background-color: #3498DB;
+>>>>>>> origin/DevelopmentBranch
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+}
+.dropbtn
+{
+  float:left;
+}
+#searchbar
+{
+  float:right;
 }
 
 
