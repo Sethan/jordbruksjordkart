@@ -88,7 +88,12 @@ path{
   background: #4CAF50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
-.dropbtn {
+#forminput{
+  border: 2px solid blue;
+  border-radius: 4px;
+  padding:16px;
+}
+button {
   background-color: #3498DB;
   color: white;
   padding: 16px;
@@ -96,7 +101,14 @@ path{
   border: none;
   cursor: pointer;
 }
-
+.dropbtn
+{
+  float:left;
+}
+#searchbar
+{
+  float:right;
+}
 
 
 /* Dropdown button on hover & focus */
