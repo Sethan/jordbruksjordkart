@@ -6,6 +6,7 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" crossorigin></script>
+    <script type="text/jsx" src="js/autocomplete.js"></script>
     <script type="text/jsx" src="js/app.js"></script>
     <script type="text/jsx" src="js/form.js"></script>
     <script type="text/jsx"  src="js/chartmaker.js"></script>
@@ -15,32 +16,28 @@
     <title>jordbrukskart</title>
     <link rel = "stylesheet" type = "text/css" href = "style.css" />
 
-    <script>
-    var input = document.getElementById("myInput");
-    input.addEventListener("keyup", function(event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById("myBtn").click();
-      }
-    });
-    </script>
 
   </head>
   <body>
+<<<<<<< HEAD
   <div class="header">
 
       <div class="swtbtn">
-        <button id="mainbtn" onclick="showGraph()" class="dropbtn switchbutton circlebtn">Graf</button>
-
+      <form>
+        <input onclick="showGraph()" type="button" class="dropbtn switchbutton circlebtn" id="mainbtn" value="Graf" />
+      </form>
       </div>
 
       <div class="searchbox">
-        <form id="searchbar">
-          <input id="forminput myInput" type="input" class="searchbar floatleft" placeholder="Search..">
+        <form id="searchbar" autocomplete="off">
+          <div class="autocomplete floatleft">
+            <input id="forminput" type="input" class="searchbar" placeholder="Search..">
+          </div>
           <button id="myBtn" type="button" class="searchbar-button floatleft" onclick="updateForm()">Search</button>
         </form>
       </div>
 
+>>>>>>> CssBranch
       <div class="slidecontainer">
           <input type="range" min="1996" max="2017" value="0" class="slider" id="myRange">
           <p id="slidertext"></p>
@@ -62,6 +59,10 @@
     <div id="TopList"></div>
 
       <canvas id="geochart" style="display:none"></canvas>
+    <div id="TopList"></div>
+
+      <canvas id="geochart" style="display:none"></canvas>
+>>>>>>> CssBranch
 
     </div>
 
@@ -77,7 +78,6 @@
        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
        version="1.2"
-       height="100%"
        viewBox="0 0 2104.7244 2979.9211"
        preserveAspectRatio="none"
        id="NO"
@@ -2766,4 +2766,13 @@
     </svg>
 
   </body>
+  <script>
+  var input = document.getElementById("forminput");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("myBtn").click();
+    }
+  });
+  </script>
 </html>

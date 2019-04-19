@@ -1,46 +1,46 @@
 
 var ids=[];
 var percentages=[];
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-showMap();
 function showMap()
 {
 	document.getElementById("Form").style.display="none";
 	document.getElementById("NO").style.display="block";
 	document.getElementById("myRange").style.display="block";
   document.getElementById("geochart").style.display="none";
+<<<<<<< HEAD
 
-  var btn = document.getElementById("mainbtn");
-    btn.setAttribute("onClick", "showGraph");
-    btn.innerHTML = "Graf";
+  document.getElementById("mainbtn").onclick = function () { showGraph(); };
+  document.getElementById("mainbtn").value = "Graf";
+=======
+  document.getElementById("TopList").style.display="none";
+  document.getElementById("digiKart").style.display="block";
+>>>>>>> CssBranch
 }
+
 function showGraph()
 {
   document.getElementById("geochart").style.display="block";
 	document.getElementById("Form").style.display="none";
   document.getElementById("NO").style.display="none";
+<<<<<<< HEAD
+	document.getElementById("myRange").style.display="block";
+
+  document.getElementById("mainbtn").onclick = function () { showMap();};
+  document.getElementById("mainbtn").value = "Kart";
+=======
 	document.getElementById("myRange").style.display="none";
-
-  var btn = document.getElementById("mainbtn");
-    btn.setAttribute("onClick", "showMap()");
-    btn.innerHTML = "Kart";
-
-
+  document.getElementById("TopList").style.display="none";
+  document.getElementById("digiKart").style.display="none";
+}
+function showTop()
+{
+  document.getElementById("TopList").style.display="block";
+  document.getElementById("NO").style.display="none";
+	document.getElementById("myRange").style.display="none";
+  document.getElementById("geochart").style.display="none";
+  document.getElementById("Form").style.display="none";
+  document.getElementById("digiKart").style.display="none";
+>>>>>>> CssBranch
 }
 function showSearch()
 {
