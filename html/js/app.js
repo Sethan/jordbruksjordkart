@@ -44,11 +44,12 @@ function showGraph()
 }
 function showSearch()
 {
-	document.getElementById("searchbar").style.display="block";
 	document.getElementById("Form").style.display="block";
 	document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
   document.getElementById("geochart").style.display="none";
+  document.getElementById("TopList").style.display="none";
+  document.getElementById("digiKart").style.display="none";
 }
 function reqListener(data) {
 	var temp=this.response;

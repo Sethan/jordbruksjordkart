@@ -3,6 +3,7 @@ body{
   padding-left: 15px;
   padding-right: 15px;
 }
+
 path{
   fill:lightgrey;
 }
@@ -94,6 +95,14 @@ path{
   font-size: 16px;
   border: none;
   cursor: pointer;
+}
+.dropbtn
+{
+  float:left;
+}
+#searchbar
+{
+  float:right;
 }
 
 
