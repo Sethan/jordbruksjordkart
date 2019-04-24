@@ -143,7 +143,7 @@ function updateTop(number)
 }
 
 function rgb(r, g, b){
-  r = Math.floor(r);
+  r = Math.floor(r/1.5);
   g = Math.floor(g);
   b = Math.floor(b);
   return ["rgb(",r,",",g,",",b,")"].join("");
