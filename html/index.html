@@ -19,13 +19,12 @@
 
   </head>
   <body>
-<<<<<<< HEAD
   <div class="header">
 
       <div class="swtbtn">
-      <form>
-        <input onclick="showGraph()" type="button" class="dropbtn switchbutton circlebtn" id="mainbtn" value="Graf" />
-      </form>
+        <form>
+          <input onclick="showGraph()" type="button" class="dropbtn switchbutton circlebtn" id="mainbtn" value="Graf" />
+        </form>
       </div>
 
       <div class="searchbox">
@@ -37,32 +36,33 @@
         </form>
       </div>
 
->>>>>>> CssBranch
       <div class="slidecontainer">
-          <input type="range" min="1996" max="2017" value="0" class="slider" id="myRange">
+          <input type="range" min="1996" max="2017" value="1996" class="slider" id="myRange">
           <p id="slidertext"></p>
+      <!--    <form>
+            <input onclick="startInc()" type="button" class="dropbtn circlebtn" value="scroll" />
+          </form> -->
       </div>
 
       <div class="swtbtn">
-        <button id="secbtn" onclick="myFunction()" class="dropbtn switchbutton2 circlebtn">swap2</button>
-
+        <form>
+          <input onclick="showTop()" type="button" class="dropbtn switchbutton2 circlebtn" id="secbtn" value="Topliste" />
+        </form>
       </div>
-
   </div>
 
     <div id="digiKart">
 
     </div>
-    <div id="Form">
+    <div id="Form" style="display:none">
 
     </div>
-    <div id="TopList"></div>
+    <div id="TopList" style="display:none"></div>
 
       <canvas id="geochart" style="display:none"></canvas>
     <div id="TopList"></div>
 
       <canvas id="geochart" style="display:none"></canvas>
->>>>>>> CssBranch
 
     </div>
 

@@ -5,16 +5,16 @@ function showMap()
 {
 	document.getElementById("Form").style.display="none";
 	document.getElementById("NO").style.display="block";
-	document.getElementById("myRange").style.display="block";
   document.getElementById("geochart").style.display="none";
-<<<<<<< HEAD
+	document.getElementById("TopList").style.display="none";
+	document.getElementById("digiKart").style.display="block";
 
   document.getElementById("mainbtn").onclick = function () { showGraph(); };
   document.getElementById("mainbtn").value = "Graf";
-=======
-  document.getElementById("TopList").style.display="none";
-  document.getElementById("digiKart").style.display="block";
->>>>>>> CssBranch
+
+	document.getElementById("secbtn").onclick = function () { showTop();};
+	document.getElementById("secbtn").value = "Topliste";
+
 }
 
 function showGraph()
@@ -22,35 +22,63 @@ function showGraph()
   document.getElementById("geochart").style.display="block";
 	document.getElementById("Form").style.display="none";
   document.getElementById("NO").style.display="none";
-<<<<<<< HEAD
 	document.getElementById("myRange").style.display="block";
+	document.getElementById("TopList").style.display="none";
+	document.getElementById("digiKart").style.display="none";
 
   document.getElementById("mainbtn").onclick = function () { showMap();};
   document.getElementById("mainbtn").value = "Kart";
-=======
-	document.getElementById("myRange").style.display="none";
-  document.getElementById("TopList").style.display="none";
-  document.getElementById("digiKart").style.display="none";
+
+	document.getElementById("secbtn").onclick = function () { showGeo();};
+	document.getElementById("secbtn").value = "Geo";
+
 }
 function showTop()
 {
   document.getElementById("TopList").style.display="block";
   document.getElementById("NO").style.display="none";
-	document.getElementById("myRange").style.display="none";
   document.getElementById("geochart").style.display="none";
   document.getElementById("Form").style.display="none";
   document.getElementById("digiKart").style.display="none";
->>>>>>> CssBranch
+
+	document.getElementById("secbtn").onclick = function () { showMap();};
+	document.getElementById("secbtn").value = "Back";
 }
-function showSearch()
+function showGeo()
 {
-	document.getElementById("Form").style.display="block";
+	document.getElementById("Form").style.display="none";
 	document.getElementById("NO").style.display="none";
-	document.getElementById("myRange").style.display="none";
-  document.getElementById("geochart").style.display="none";
+  document.getElementById("geochart").style.display="block";
   document.getElementById("TopList").style.display="none";
   document.getElementById("digiKart").style.display="none";
+
+	document.getElementById("secbtn").onclick = function () { showGraph();};
+	document.getElementById("secbtn").value = "Back";
 }
+
+function startInc()
+{
+	var myVar = setInterval(increment, 1200);
+
+	function increment()
+	{
+		var range = document.getElementById("myRange").value;
+		if (range > 1996)
+			clearInterval(myVar);
+		if (range = 2017)
+			document.getElementById("myRange").value = "1996";
+		if (range < 2017)
+		{
+			while (range < 2017) {
+				document.getElementById("myRange").stepUp(1);
+				var range = document.getElementById("myRange").value;
+			}
+		clearInterval(myVar);
+		}
+	}
+}
+
+
 function reqListener(data) {
 	var temp=this.response;
 	temp=temp.replace(/[^\d,.]/g, '');
