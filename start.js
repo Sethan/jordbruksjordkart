@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/html'));
 app.get('/api', function(req, res){
     if(req.query.year)
     {
-      db.query("SELECT id, (landbruksareal/(areal*1000.0)) as percent FROM kommune, kommunelandbruksareal where Aar="+req.query.year+" and Kommune_id=id", function (err, result, fields) {
+      db.query("SELECT id, (landbruksareal/(areal*1000.0)) as percent FROM kommune, kommunelandbruksareal where Aar="+req.query.year+" and Kommune_id=id and kommune.startaar<=aar and kommune.sluttaar>=aar", function (err, result, fields) {
           if (err) throw err;
          res.send(result);
       });
