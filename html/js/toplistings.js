@@ -1,10 +1,11 @@
+
 class TopFormat extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             form: [],
             form2: [],
-            aar:2017
+            aar: [1969,2018]
         }
     }
 
@@ -50,7 +51,7 @@ class TopFormat extends React.Component {
                            <tr>
                                <th>Navn</th>
                                <th>Endringer i prosent</th>
-                               <th>{this.state.aar}</th>
+                               <th>{this.state.aar[0]}-{this.state.aar[1]}</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -58,7 +59,7 @@ class TopFormat extends React.Component {
                        {this.state.form.map(area =>
                         <tr key={area.id}>
                         <td>{area.navn} </td>
-                        <td>{area.percent}</td>
+                        <td>{area.percent}%</td>
                         </tr>
                         )}
                        </tbody>
@@ -67,7 +68,7 @@ class TopFormat extends React.Component {
                        {this.state.form2.map(area =>
                         <tr key={area.id}>
                         <td>{area.navn} </td>
-                        <td>{area.percent}</td>
+                        <td>{area.percent}%</td>
                         </tr>
                         )}
                        </tbody>

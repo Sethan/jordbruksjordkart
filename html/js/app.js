@@ -23,13 +23,13 @@ function showMap()
 	document.getElementById("Form").style.display="none";
 	document.getElementById("NO").style.display="block";
 	document.getElementById("myRange").style.display="block";
-  document.getElementById("geochart").style.display="none";
+  document.getElementById("chartContainer").style.display="none";
   document.getElementById("TopList").style.display="none";
   document.getElementById("digiKart").style.display="block";
 }
 function showGraph()
 {
-  document.getElementById("geochart").style.display="block";
+  document.getElementById("chartContainer").style.display="block";
 	document.getElementById("Form").style.display="none";
   document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
@@ -41,7 +41,7 @@ function showTop()
   document.getElementById("TopList").style.display="block";
   document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
-  document.getElementById("geochart").style.display="none";
+  document.getElementById("chartContainer").style.display="none";
   document.getElementById("Form").style.display="none";
   document.getElementById("digiKart").style.display="none";
 }
@@ -50,7 +50,7 @@ function showSearch()
 	document.getElementById("Form").style.display="block";
 	document.getElementById("NO").style.display="none";
 	document.getElementById("myRange").style.display="none";
-  document.getElementById("geochart").style.display="none";
+  document.getElementById("chartContainer").style.display="none";
   document.getElementById("TopList").style.display="none";
   document.getElementById("digiKart").style.display="none";
 }
@@ -104,7 +104,6 @@ slider.oninput = function() {
       n=1989;
 		}
     initialize(parseInt(n));
-    updateTop(n);
 }
 
 function load(){
@@ -124,8 +123,12 @@ for(i in ids){
 	if(document.getElementById(location))
 	{
 			document.getElementById(location).style.fill=rgb(red,green,0);
-			document.getElementById(location).addEventListener('click', updateForm ,true);
+			document.getElementById(location).addEventListener('click', updateForm2 ,true);
 	}
+  else
+  {
+    console.log(location);
+  }
 }
 }
 
@@ -135,12 +138,14 @@ function updateForm()
 		areaformat.componentDidMount();
     return false;
 }
-
-function updateTop(number)
+function updateForm2()
 {
-  topformat.setState({aar:number});
-  topformat.componentDidMount();
+		areaformat.setState({areal_id:this.id});
+		areaformat.componentDidMount();
+    return false;
 }
+
+
 
 function rgb(r, g, b){
   r = Math.floor(r/1.5);

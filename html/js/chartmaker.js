@@ -24,7 +24,6 @@ function updateChart(form)
   gdata.reverse();
   if(norgechart==form)
   {
-    console.log("ded");
     gchart = new Chart(ctx, {
       type: 'line',
       data: {
