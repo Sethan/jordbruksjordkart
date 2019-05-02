@@ -1,5 +1,6 @@
 import mysql.connector
 import csv
+import re
 import math
 with open("fylkeAreal.csv", encoding="UTF-8") as f:
     reader=csv.reader(f, delimiter=";")
@@ -38,7 +39,7 @@ with open("JordbruksAreal.csv", encoding="ISO-8859-1") as f:
             reader2=csv.reader(u, delimiter=";")
             if counter==0:
                 for y in range(2,len(row)):
-                    a=row[y]
+                    a=re.findall(r'\d+',row[y])
                     years.append(a[0])
             else:
                 for x in reader2:
