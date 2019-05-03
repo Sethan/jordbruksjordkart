@@ -1,4 +1,4 @@
-
+var svg = document.getElementById('NO');
 var ids=[];
 var percentages=[];
 var translatingtable = [["904","924","923"],["709","707","708","725","726","727","712"],["704","705","721"],["106","103","113","131","133","134"],["105","102","130","114","115"],["1160","1154","1159","1214"],["1231","1230"],["612","601"],["605","601"],["403","401","414"],["519","518"],["516","518"],["436","435"],["441","435"],["1504","1501"],["1523","1527"],["1505","1503","1556"],["1576","1569","1572"],["1756","1723","1729","5053"],["1813","1814"],["1874","1858"],["1903","1901","1915"],["1923","1921","1920"],["2004","2001","2017"],["906","903"],["1160","1154","1159"],["1449","1448"],["1915","1903"],["1723","1756","5053"],["706","710"],["719","710"],["720","710"],["722","729"],["723","729"],["702","715"],["714","715"],["728","712"],["1622","5016"],["1627","5017"],["1749","5049"],["1748","5048"],["1717","5036"],["1620","5014"],["1742","5045"],["1612","5011"],["1617","5013"],["1644","5026"],["1743","5046"],["1662","5030"],["1755","5052"],["1719","5037"],["1738","5042"],["1663","5031"],["1636","5023"],["1653","5028"],["1711","5034"],["1648","5027"],["1725","5040"],["1703","5005"],["1740","5044"],["1751","5051"],["1634","5021"],["1638","5024"],["1633","5020"],["1744","5047"],["1635","5022"],["1632","5019"],["1640","5025"],["1739","5043"],["1664","5032"],["1657","5029"],["1613","5012"],["1736","5041"],["1702","5004"],["1714","5035"],["1601","5001"],["1665","5033"],["1721","5038"],["1724","5039"],["1750","5050"],["1621","5015"],["1630","5018"],["1624","5054"],["1718","5054"],["701","717"],["1201","1248","1249","1250","1255","1301"]];
@@ -165,41 +165,39 @@ function colorize(percentage,id)
   if(document.getElementById(id))
   {
       document.getElementById(id).style.fill=rgb(red,green,0);
-      document.getElementById(id).addEventListener('click', updateForm2 ,true);
+      document.getElementById(id).addEventListener('click', zoom ,true);
   }
 }
 function updateForm()
-{console.log
-		areaformat.setState({areal_id:document.getElementById('forminput').value});
-		areaformat.componentDidMount();
-    return false;
-}
-function updateForm2()
 {
-		areaformat.setState({areal_id:this.id});
+		areaformat.setState({areal_id:document.getElementById('forminput').value});
+    showSearch();
 		areaformat.componentDidMount();
-    var modifier=Math.floor(this.id/100);
-    var n;
-    for(n in rootedIds)
-    {
-      if(Math.floor(rootedIds[n]/100)!=modifier)
-      {
-        var id=rootedIds[n];
-        if(id<1000)
-        {
-          id="0"+id;
-        }
-        if(document.getElementById(id))
-        {
-          document.getElementById(id).style.display="none";
-        }
-        else {
-          console.log(id);
-        }
-      }
-    }
     return false;
 }
+
+
+function zoom()
+{
+  var originalwidth=2104.7244;
+  var originalheight=2979.9211;
+  var view = svg.getAttribute("viewBox").split(" ");
+  if(view[0]!=0)
+  {
+    svg.setAttribute("viewBox", "0 0 "+originalwidth+" "+originalheight+" ");
+    console.log(view);
+  }
+  else {
+
+    var adjusted=this.getAttribute('d').split(",");
+    var adjustedX=adjusted[0].split(" ")[1]-225;
+    var adjustedY=adjusted[1].split(" ")[0]-225;
+    var aspect=originalwidth/originalheight;
+    var newscale=450;
+    svg.setAttribute("viewBox", adjustedX+" "+adjustedY+" "+aspect*newscale+" "+newscale);
+  }
+}
+
 function rgb(r, g, b){
   r = Math.floor(r/1.5);
   g = Math.floor(g);

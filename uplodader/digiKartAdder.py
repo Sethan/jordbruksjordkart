@@ -11,14 +11,13 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
             database="mydb"
     )
     mycursor=mydb.cursor()
-    mycursor.execute("DELETE FROM kommuner_over_tid")
     mycursor.execute("DELETE FROM kommune")
     mycursor.execute("DELETE FROM kommunelandbruksareal")
     mycursor.execute("DELETE FROM fylke")
     mydb.commit()
     for row in reader:
-        sql = "INSERT INTO fylke (id,Navn) VALUES (%s,%s)"
-        values =(row[0],row[1])
+        sql = "INSERT INTO fylke (id,Navn,areal) VALUES (%s,%s,%s)"
+        values =(row[0],row[1],row[2])
         mycursor.execute(sql,values)
     mydb.commit()
 
@@ -44,8 +43,8 @@ with open("JordbruksAreal.csv", encoding="ISO-8859-1") as f:
             else:
                 for x in reader2:
                        if x[0]==row[0]:
-                           sql = "INSERT INTO kommune (id,Navn,Areal,startaar,sluttaar) VALUES (%s,%s,%s,%s,%s)"
-                           values =(x[0],x[1],x[2],x[3],x[4])
+                           sql = "INSERT INTO kommune (id,Navn,Areal,startaar,sluttaar,fylke_id) VALUES (%s,%s,%s,%s,%s,%s)"
+                           values =(x[0],x[1],x[2],x[3],x[4],math.floor(int(row[0])/100))
                            mycursor.execute(sql,values)
                            for n in range(2,len(row)):
                                sql2 = "INSERT INTO kommunelandbruksareal (Landbruksareal,Aar, Kommune_id) VALUES (%s, %s, %s)"
@@ -55,13 +54,5 @@ with open("JordbruksAreal.csv", encoding="ISO-8859-1") as f:
                                mycursor.execute(sql2,values2)
             print("Number %d" %counter)
             counter+=1
-    mydb.commit()
-    with open("kommuneAreal.csv") as k:
-        reader=csv.reader(k, delimiter=";")
-        for row in reader:
-            sql = "INSERT INTO kommuner_over_tid (fylke_id,kommune_id) VALUES (%s,%s)"
-            values =(math.floor(int(row[0])/100),row[0])
-            print(values)
-            mycursor.execute(sql,values)
     mydb.commit()
 print("done!")
