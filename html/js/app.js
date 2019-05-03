@@ -171,7 +171,10 @@ function colorize(percentage,id)
 function updateForm()
 {
 		areaformat.setState({areal_id:document.getElementById('forminput').value});
-    showSearch();
+    if(document.getElementById("chartContainer").style.display=="none")
+    {
+      showSearch();
+    }
 		areaformat.componentDidMount();
     return false;
 }
