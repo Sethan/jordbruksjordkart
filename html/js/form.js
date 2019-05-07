@@ -31,7 +31,6 @@ class AreaFormat extends React.Component {
       });
     }
     render() {
-            console.log(this.state.form.areal)
            return (
            <div className="container">
                <div className="formcontainer">
@@ -57,9 +56,29 @@ class AreaFormat extends React.Component {
                         )}
                        </tbody>
                    </table>
+                   {checkChange(this.state) &&
+                     <p>Dette omerådet har endret areal</p>
+                   }
                </div>
            </div>
          );
    }
 }
 const areaformat = ReactDOM.render(<AreaFormat/>, window.document.getElementById("Form"));
+
+function checkChange(object)
+{
+  if(object.areal_id.toUpperCase()==="NORGE")
+  {
+    return false;
+  }
+  object=object.form;
+  if(object[0]!==undefined)
+  {
+      if(object[0].areal-object[object.length-1].areal)
+      {
+        return true;
+      }
+  }
+  return false;
+}
