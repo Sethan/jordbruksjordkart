@@ -3,7 +3,7 @@ class AreaFormat extends React.Component {
         super(props)
         this.state = {
             form: [],
-            areal_id:"norge"
+            areal_id:"Norge"
         }
     }
 
@@ -31,16 +31,19 @@ class AreaFormat extends React.Component {
       });
     }
     render() {
+            console.log(this.state.form.areal)
            return (
            <div className="container">
-               <div className="panel panel-default p50 uth-panel">
+               <div className="formcontainer">
                    <table className="table table-hover">
                        <thead>
+                          <tr>
+                            <th>{this.state.areal_id}</th>
+                          </tr>
                            <tr>
                                <th>År</th>
                                <th>Landbruksareal</th>
                                <th>Prosent</th>
-                               <th>{this.state.areal_id}</th>
                            </tr>
                        </thead>
                        <tbody>

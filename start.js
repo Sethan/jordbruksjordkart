@@ -48,7 +48,7 @@ app.get('/getinfo', function(req, res){
     //db.query("SELECT id, (sum(landbruksareal)/(areal*1000.0*count(*))) as averagepercent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.areal_id+" and Kommune_id=id", function (err, result, fields) {
     if(isNaN(req.query.area_id))
     {
-      if(req.query.area_id=="norge")
+      if(req.query.area_id.toUpperCase()=="NORGE")
       {
 
           q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY kommunelandbruksareal.aar order by aar desc";

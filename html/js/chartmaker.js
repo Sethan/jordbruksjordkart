@@ -22,7 +22,7 @@ function updateChart(form)
   }
   glabels.reverse();
   gdata.reverse();
-  if(norgechart==form)
+  if(norgechart.areal_id==form.areal_id)
   {
     gchart = new Chart(ctx, {
       type: 'line',

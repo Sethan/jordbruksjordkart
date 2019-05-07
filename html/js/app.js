@@ -171,28 +171,52 @@ function colorize(percentage,id)
 function updateForm()
 {
 		areaformat.setState({areal_id:document.getElementById('forminput').value});
-    if(document.getElementById("chartContainer").style.display=="none")
+    var i;
+    var id=0;
+    for(i in rootedIds)
     {
-      showSearch();
+      id=rootedIds[i];
+      if(id<1000)
+      {
+        id="0"+id;
+      }
+      if(document.getElementById(id))
+      {
+        if(document.getElementById('forminput').value.toUpperCase()==document.getElementById(id).getAttribute('inkscape:label').toUpperCase())
+        {
+          zoom(id);
+          break;
+        }
+      }
     }
 		areaformat.componentDidMount();
     return false;
 }
 
 
-function zoom()
+function zoom(id)
 {
+  var label;
+  var adjusted;
+  if(this)
+  {
+    label=this.getAttribute('inkscape:label');
+    adjusted=this.getAttribute('d').split(",");
+  }
+  else {
+    label=document.getElementById(id).getAttribute('inkscape:label');
+    adjusted=document.getElementById(id).getAttribute('d').split(",");
+  }
   var originalwidth=2104.7244;
   var originalheight=2979.9211;
+
   var view = svg.getAttribute("viewBox").split(" ");
   if(view[0]!=0)
   {
     svg.setAttribute("viewBox", "0 0 "+originalwidth+" "+originalheight+" ");
-    console.log(view);
   }
   else {
-
-    var adjusted=this.getAttribute('d').split(",");
+    document.getElementById('forminput').value=label;
     var adjustedX=adjusted[0].split(" ")[1]-225;
     var adjustedY=adjusted[1].split(" ")[0]-225;
     var aspect=originalwidth/originalheight;

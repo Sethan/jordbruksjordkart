@@ -45,12 +45,12 @@ class TopFormat extends React.Component {
     render() {
            return (
            <div className="container">
-               <div className="panel panel-default p50 uth-panel">
+               <div className="formcontainer">
                    <table className="table table-hover">
                        <thead>
                            <tr>
                                <th>Navn</th>
-                               <th>Endringer i prosent</th>
+                               <th>Økt mest</th>
                                <th>{this.state.aar[0]}-{this.state.aar[1]}</th>
                            </tr>
                        </thead>
@@ -63,8 +63,14 @@ class TopFormat extends React.Component {
                         </tr>
                         )}
                        </tbody>
+                       <thead>
+                           <tr>
+                               <th></th>
+                               <th>Minket mest</th>
+                               <th></th>
+                           </tr>
+                       </thead>
                        <tbody>
-
                        {this.state.form2.map(area =>
                         <tr key={area.id}>
                         <td>{area.navn} </td>
