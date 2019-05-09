@@ -156,8 +156,8 @@ function load()
 
 function colorize(percentage,id)
 {
-  var red=255-35*Math.log2(percentage*100+1);
-  var green=35*Math.log2(percentage*100+1);
+  var red=255-45*Math.log2(percentage*100+1);
+  var green=45*Math.log2(percentage*100+1);
   if(id<1000)
   {
     id="0"+id;
