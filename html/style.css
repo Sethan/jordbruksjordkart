@@ -153,6 +153,11 @@ button {
   font-family: adelle,monospace;
   font-weight: bold;
 }
+footer p
+{
+  text-align:center;
+  font-family:monospace;
+}
 .autocomplete-items
 {
   font-family: adelle, serif;
