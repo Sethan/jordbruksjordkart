@@ -57,7 +57,7 @@ class AreaFormat extends React.Component {
                        </tbody>
                    </table>
                    {checkChange(this.state) &&
-                     <p>Dette omerådet har endret areal</p>
+                     <p>Dette området har endret areal</p>
                    }
                </div>
            </div>
