@@ -29,6 +29,7 @@ function showMap()
   document.getElementById("chartContainer").style.display="none";
   document.getElementById("TopList").style.display="none";
   document.getElementById("digiKart").style.display="block";
+  document.getElementById("disclaimer").style.display="block";
 }
 function showGraph()
 {
@@ -38,6 +39,7 @@ function showGraph()
 	document.getElementById("myRange").style.display="none";
   document.getElementById("TopList").style.display="none";
   document.getElementById("digiKart").style.display="none";
+  document.getElementById("disclaimer").style.display="none";
 }
 function showTop()
 {
@@ -47,6 +49,7 @@ function showTop()
   document.getElementById("chartContainer").style.display="none";
   document.getElementById("Form").style.display="none";
   document.getElementById("digiKart").style.display="none";
+  document.getElementById("disclaimer").style.display="none";
 }
 function showSearch()
 {
@@ -56,6 +59,7 @@ function showSearch()
   document.getElementById("chartContainer").style.display="none";
   document.getElementById("TopList").style.display="none";
   document.getElementById("digiKart").style.display="none";
+  document.getElementById("disclaimer").style.display="none";
 }
 function reqListener(data) {
 	var temp=this.response;
