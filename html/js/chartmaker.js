@@ -22,7 +22,7 @@ function updateChart(form)
   }
   glabels.reverse();
   gdata.reverse();
-  if(norgechart.areal_id==form.areal_id)
+  if(norgechart.areal_id.toUpperCase()===form.areal_id.toUpperCase())
   {
     gchart = new Chart(ctx, {
       type: 'line',
@@ -43,6 +43,7 @@ function updateChart(form)
     {
       ndata[i]=norgechart.form[i].percent;
     }
+    ndata.reverse();
     gchart = new Chart(ctx, {
       type: 'line',
       data: {
