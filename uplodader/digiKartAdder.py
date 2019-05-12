@@ -1,12 +1,7 @@
 import mysql.connector
 import csv
-<<<<<<< HEAD
-import sys
-
-=======
 import re
 import math
->>>>>>> 9000265607f54ebd3c48e97f81139b9b611fab11
 with open("fylkeAreal.csv", encoding="UTF-8") as f:
     reader=csv.reader(f, delimiter=";")
     mydb = mysql.connector.connect(
@@ -16,7 +11,7 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
             database="mydb"
     )
     mycursor=mydb.cursor()
-    mycursor.execute("DELETE FROM kommuner_over_tid")
+    # mycursor.execute("DELETE FROM kommuner_over_tid")
     mycursor.execute("DELETE FROM kommune")
     mycursor.execute("DELETE FROM kommunelandbruksareal")
     mycursor.execute("DELETE FROM fylke")
@@ -60,9 +55,5 @@ with open("JordbruksAreal.csv", encoding="ISO-8859-1") as f:
                                mycursor.execute(sql2,values2)
             print("Number %d" %counter)
             counter+=1
-<<<<<<< HEAD
-sys.exit()
-=======
     mydb.commit()
 print("done!")
->>>>>>> 9000265607f54ebd3c48e97f81139b9b611fab11
