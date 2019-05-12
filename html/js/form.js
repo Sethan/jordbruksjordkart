@@ -3,7 +3,7 @@ class AreaFormat extends React.Component {
         super(props)
         this.state = {
             form: [],
-            areal_id:"norge"
+            areal_id:"Norge"
         }
     }
 
@@ -33,14 +33,16 @@ class AreaFormat extends React.Component {
     render() {
            return (
            <div className="container">
-               <div className="panel panel-default p50 uth-panel">
+               <div className="formcontainer">
                    <table className="table table-hover">
                        <thead>
+                          <tr>
+                            <th>{this.state.areal_id}</th>
+                          </tr>
                            <tr>
                                <th>År</th>
                                <th>Landbruksareal</th>
                                <th>Prosent</th>
-                               <th>{this.state.areal_id}</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -54,9 +56,29 @@ class AreaFormat extends React.Component {
                         )}
                        </tbody>
                    </table>
+                   {checkChange(this.state) &&
+                     <p>Dette området har endret areal</p>
+                   }
                </div>
            </div>
          );
    }
 }
 const areaformat = ReactDOM.render(<AreaFormat/>, window.document.getElementById("Form"));
+
+function checkChange(object)
+{
+  if(object.areal_id.toUpperCase()==="NORGE")
+  {
+    return false;
+  }
+  object=object.form;
+  if(object[0]!==undefined)
+  {
+      if(object[0].areal-object[object.length-1].areal)
+      {
+        return true;
+      }
+  }
+  return false;
+}

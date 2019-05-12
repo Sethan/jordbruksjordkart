@@ -1,12 +1,57 @@
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
 body{
-  height: 600px;
+  max-height: 900px;
 }
+
 path{
   fill:lightgrey;
 }
+.floatleft {
+  float: left;
+}
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+.header {
+  width: 100%;
+  height: 250px;
+  padding-bottom: 4px;
+
+}
+.switchbutton {
+  position: fixed;
+  top: 10px;
+  right: -55px;
+}
+.switchbutton2 {
+  position: fixed;
+  top: 140px;
+  right: -55px;
+}
+.circlebtn {
+  border-radius: 70%;
+  padding-right: 10px;
+  width: 170px;
+  height: 100px;
+}
+.searchbar {
+  width: 25%;
+  height: 50px;
+  left: 0;
+  padding-left: 15px;
+}
+.searchbar-button {
+  height: 56px;;
+  width: 7%;
+}
+.searchbox {
+  padding-top: 25px;
+}
+.slidecontainer {
+  padding-top: 77.5px;
+}
+
+
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
@@ -41,23 +86,32 @@ path{
   background: #4CAF50; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
-.dropbtn {
-  background-color: #3498DB;
+#forminput{
+  border: 2px solid blue;
+  border-radius: 4px;
+  padding:16px;
+}
+button {
+  background-color: #009900;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
 }
-
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+.dropbtn
+{
+  float:left;
+}
+#searchbar
+{
+  float:right;
 }
 
+
+
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.switchbtn {
   position: relative;
   display: inline-block;
 }
@@ -70,16 +124,46 @@ path{
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  margin: auto;
 }
 
 /* Links inside the dropdown */
 .dropdown-content button {
-  color: black;
   padding: 12px 16px;
   text-decoration: none;
+  width: 100%;
   display: block;
+  margin:auto;
 }
+
 
 /* Change color of dropdown links on hover */
 .dropdown-content button:hover {background-color: #ddd}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+  cursor:pointer;
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+#slidertext
+{
+  text-align: center;
+  font-family: adelle,monospace;
+  font-weight: bold;
+}
+footer p
+{
+  text-align:center;
+  font-family:monospace;
+}
+.autocomplete-items
+{
+  font-family: adelle, serif;
+}
 .show {display:block;}
+.formcontainer
+{
+  font-family: adelle,monospace;
+}

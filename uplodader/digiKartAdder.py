@@ -1,8 +1,12 @@
 import mysql.connector
-import re
 import csv
+<<<<<<< HEAD
 import sys
 
+=======
+import re
+import math
+>>>>>>> 9000265607f54ebd3c48e97f81139b9b611fab11
 with open("fylkeAreal.csv", encoding="UTF-8") as f:
     reader=csv.reader(f, delimiter=";")
     mydb = mysql.connector.connect(
@@ -18,13 +22,13 @@ with open("fylkeAreal.csv", encoding="UTF-8") as f:
     mycursor.execute("DELETE FROM fylke")
     mydb.commit()
     for row in reader:
-        sql = "INSERT INTO fylke (id,Navn,Areal) VALUES (%s,%s,%s)"
+        sql = "INSERT INTO fylke (id,Navn,areal) VALUES (%s,%s,%s)"
         values =(row[0],row[1],row[2])
         mycursor.execute(sql,values)
     mydb.commit()
 
 
-with open("kommune.csv", encoding="ISO-8859-1") as f:
+with open("JordbruksAreal.csv", encoding="ISO-8859-1") as f:
     reader=csv.reader(f, delimiter=";")
     counter=0
     mydb = mysql.connector.connect(
@@ -45,14 +49,20 @@ with open("kommune.csv", encoding="ISO-8859-1") as f:
             else:
                 for x in reader2:
                        if x[0]==row[0]:
-                           sql = "INSERT INTO kommune (id,Navn,Areal) VALUES (%s,%s,%s)"
-                           values =(x[0],x[1],x[2])
+                           sql = "INSERT INTO kommune (id,Navn,Areal,startaar,sluttaar,fylke_id) VALUES (%s,%s,%s,%s,%s,%s)"
+                           values =(x[0],x[1],x[2],x[3],x[4],math.floor(int(row[0])/100))
                            mycursor.execute(sql,values)
-                           for n in range(3,len(row)):
+                           for n in range(2,len(row)):
                                sql2 = "INSERT INTO kommunelandbruksareal (Landbruksareal,Aar, Kommune_id) VALUES (%s, %s, %s)"
-                               values2 = (row[n],years[n-3],x[0])
+                               if row[n]=="NULL":
+                                   row[n]=None
+                               values2 = (row[n],years[n-2],x[0])
                                mycursor.execute(sql2,values2)
-            mydb.commit()
             print("Number %d" %counter)
             counter+=1
+<<<<<<< HEAD
 sys.exit()
+=======
+    mydb.commit()
+print("done!")
+>>>>>>> 9000265607f54ebd3c48e97f81139b9b611fab11
