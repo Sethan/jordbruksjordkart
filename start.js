@@ -51,19 +51,19 @@ app.get('/getinfo', function(req, res){
       if(req.query.area_id.toUpperCase()=="NORGE")
       {
 
-          q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY kommunelandbruksareal.aar order by aar desc";
+          q="select round(sum(landbruksareal)/1000) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY kommunelandbruksareal.aar order by aar desc";
           db.query(q, function (err, result, fields) {
               if (err) throw err;
               res.send(JSON.stringify(result));
           });
       }
       else {
-      q="SELECT landbruksareal,areal, aar, round((landbruksareal/(areal*10.0))*10)/10 as percent FROM kommune, kommunelandbruksareal where kommune.navn='"+req.query.area_id+"' and Kommune_id=id and kommune.startaar<=aar and kommune.sluttaar>=aar order by aar DESC";
+      q="SELECT round(landbruksareal/1000) as landbruksareal,areal, aar, round((landbruksareal/(areal*10.0))*10)/10 as percent FROM kommune, kommunelandbruksareal where kommune.navn='"+req.query.area_id+"' and Kommune_id=id and kommune.startaar<=aar and kommune.sluttaar>=aar order by aar DESC";
       db.query(q, function (err, result, fields) {
           if (err) throw err;
           if(result=="")
           {
-            db.query("select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and fylke.navn='"+req.query.area_id+"' and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY fylke.id,kommunelandbruksareal.aar order by aar DESC", function (err2, result2, fields2) {
+            db.query("select round(sum(landbruksareal)/1000) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and fylke.navn='"+req.query.area_id+"' and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY fylke.id,kommunelandbruksareal.aar order by aar DESC", function (err2, result2, fields2) {
                 if (err2) throw err;
                   res.send(JSON.stringify(result2));
               });
@@ -78,10 +78,10 @@ app.get('/getinfo', function(req, res){
     else {
       if(req.query.area_id>99)
       {
-        q="SELECT landbruksareal,areal, aar, (landbruksareal/(areal*10.0)) as percent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.area_id+" and Kommune_id=id and kommune.startaar<=aar and kommune.sluttaar>=aar order by aar DESC";
+        q="SELECT round(landbruksareal/1000) as landbruksareal,areal, aar, (landbruksareal/(areal*10.0)) as percent FROM kommune, kommunelandbruksareal where Kommune_id="+req.query.area_id+" and Kommune_id=id and kommune.startaar<=aar and kommune.sluttaar>=aar order by aar DESC";
       }
       else {
-        q="select sum(landbruksareal) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and fylke.id="+req.query.area_id+" and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY fylke.id,kommunelandbruksareal.aar order by aar DESC";
+        q="select round(sum(landbruksareal)/1000) as landbruksareal, sum(kommune.areal) as areal, kommunelandbruksareal.aar as aar, round((sum(landbruksareal)/(sum(kommune.areal)*10.0))*10)/10 as percent from kommune, fylke, kommunelandbruksareal where fylke.id=Fylke_id and fylke.id="+req.query.area_id+" and kommunelandbruksareal.kommune_id=kommune.id and kommune.startaar<=aar and kommune.sluttaar>=aar GROUP BY fylke.id,kommunelandbruksareal.aar order by aar DESC";
       }
       db.query(q, function (err, result, fields) {
           if (err) throw err;

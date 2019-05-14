@@ -50,7 +50,7 @@ class AreaFormat extends React.Component {
                        {this.state.form.map(area =>
                         <tr key={area.aar}>
                         <td>{area.aar} </td>
-                        <td>{area.landbruksareal}</td>
+                        <td>{area.landbruksareal} km²</td>
                         <td>{area.percent}%</td>
                         </tr>
                         )}
