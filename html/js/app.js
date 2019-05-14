@@ -221,10 +221,10 @@ function zoom(id)
   }
   else {
     document.getElementById('forminput').value=label;
-    var adjustedX=adjusted[0].split(" ")[1]-225;
-    var adjustedY=adjusted[1].split(" ")[0]-225;
     var aspect=originalwidth/originalheight;
     var newscale=450;
+    var adjustedX=adjusted[0].split(" ")[1]-225*aspect;
+    var adjustedY=adjusted[1].split(" ")[0]-225;
     svg.setAttribute("viewBox", adjustedX+" "+adjustedY+" "+aspect*newscale+" "+newscale);
   }
 }
