@@ -1,5 +1,6 @@
 body{
   max-height: 900px;
+  min-width: 400px;
 }
 
 path{
@@ -140,11 +141,11 @@ button {
 /* Change color of dropdown links on hover */
 .dropdown-content button:hover {background-color: #ddd}
 .autocomplete-items div:hover {
-  background-color: #e9e9e9;
+  background-color: #009900;
   cursor:pointer;
 }
 .autocomplete-active {
-  background-color: DodgerBlue !important;
+  background-color: #009900 !important;
   color: #ffffff;
 }
 #slidertext
@@ -153,6 +154,7 @@ button {
   font-family: adelle,monospace;
   font-weight: bold;
 }
+
 footer p
 {
   text-align:center;
@@ -160,7 +162,13 @@ footer p
 }
 .autocomplete-items
 {
-  font-family: adelle, serif;
+  font-family: adelle,monospace, serif;
+  background-color:white;
+  position: relative;
+  z-index: 1;
+}
+#forminputautocomplete-list{
+  margin-bottom: -100%;
 }
 .show {display:block;}
 .formcontainer
